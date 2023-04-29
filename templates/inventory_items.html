@@ -1,0 +1,69 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="content-wrapper">
+    <!-- Content -->
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+      <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"> W A R E H O U S E S / </span> {{ warehouse.warehouse_name }} </h4>
+    <div class="row">
+      <div class="table-responsive text-nowrap" style="padding-bottom: 10%; "">
+        <table class="table table-hover" style="padding-bottom: 30px">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>NAME</th>
+                <th>LINE</th>
+                <th>SIZE</th>
+                <th>SPECS</th>
+                <th>COST</th>
+                <th>PRICE</th>
+                <th>DISCOUNT</th>
+                <th>QTY</th>
+                <th>BARCODE</th>
+                <th>TAX</th>
+                <th>VENDOR</th>
+                <th>ACTIONS</th>
+            </tr>
+            </thead>
+            <tbody class="table-border-bottom-0">
+            {% for i in inventory %}
+            <tr>
+                <td>{{i.fk_product_id.product_internal_id}}</td>
+                <td>{{i.fk_product_id.product_name}}</td>
+                <td><strong>{{i.fk_product_id.product_line}}</strong></td>
+                <td><strong>{{i.fk_product_id.fk_size_id}}</strong></td>
+                <td> <strong>{{i.fk_product_id.fk_specs_id}}</strong></td>
+                <td>{{i.fk_product_id.product_cost_price}}</td>
+                <td>{{i.fk_product_id.product_sell_price}}</td>
+                <td>{{i.fk_product_id.product_discount}}%</td>
+                <td><strong>{{i.quantity}}</strong></td>
+                <td>{{i.fk_product_id.product_barcode}}</td>
+                <td>{{i.fk_product_id.product_tax_num}}</td>
+                <td>PRODUCT_VENDOR_1</td>
+                <td>
+                <div class="dropdown">
+                    <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                    <i class="bx bx-dots-vertical-rounded"></i>
+                    </button>
+                    <div class="dropdown-menu">
+                    <a class="dropdown-item" href="#"
+                        ><i class="bx bx-edit-alt me-1"></i> Edit</a
+                    >
+                    <a class="dropdown-item" href="#"
+                        ><i class="bx bx-trash me-1"></i> Delete</a
+                    >
+                    </div>
+                </div>
+                </td>
+            </tr>
+            {% endfor %}
+            </tbody>
+        </table>
+        </div>
+      </div>
+
+    </div>
+    
+</div>
+{% endblock %}  

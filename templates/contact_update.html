@@ -1,0 +1,89 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="content-wrapper">
+    <!-- Content -->
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+      <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">C O N T A C T/ </span> U P D A T E</h4>
+
+      <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-4">
+                <div class="card-body">
+                        
+                        <form action="/contact-update/{{c.id}}" method="POST">
+                            {% csrf_token %} 
+                            <div class="modal-body">
+                        
+                            <div class="row g-2">
+                                <div class="col mb-0">
+                                <label for="emailBasic" class="form-label">Name</label>
+                                <input name="contact_name_" type="text" id="nameBasic" class="form-control" placeholder=Jo****" value="{{c.contact_name}}"/>
+                                </div>
+                                <div class="col mb-0">
+                                <label for="dobBasic" class="form-label">Phone</label>
+                                <input name="contact_phone_" type="text" id="nameBasic" class="form-control" placeholder="(+)01*******" value="{{c.contact_phone}}" />
+                                </div>
+                            </div>
+                       
+
+                            <div class="row g-2">
+                                <div class="col mb-0">
+                                <label for="emailBasic" class="form-label">Position</label>
+                                <input name="contact_position_" type="text" id="nameBasic" class="form-control" placeholder="Sales Manger-******" value="{{c.contact_position}}" />
+                                </div>
+                                <div class="row g-2">
+                                    <div class="col mb-0">
+                                    <label for="emailBasic" class="form-label">E-mail</label>
+                                    <input name="contact_email_" type="text" id="nameBasic" class="form-control" placeholder="name@example.com" value="{{c.contact_email}}"/>
+                                    </div>
+                            </div>
+                            
+        
+                            <div class="row">
+                                <div class="col mb-0">
+                                    <label for="dobBasic" class="form-label">Notes</label>
+                                    <input name="contact_notes_" type="text" id="nameBasic" class="form-control" placeholder="Notes*****" value="{{c.contact_notes}}" />
+                                    </div>
+                            </div>
+
+                            
+
+                              <div class="mb-3">
+                                <label for="exampleFormControlSelect1" class="form-label">Company Category Type</label>
+                                <select name="FK_com_category_id_"  class="form-select" id="cmb_categories" >
+                                    {% for cat in categories %}
+                                    <option value="{{ cat.id }}"  >{{ cat.com_category_name }}</option>
+                                {% endfor %}
+                                </select>
+                              </div>
+                              
+                              <div class="mb-3">
+                                <label for="exampleFormControlSelect1" class="form-label">Companies </label>
+                                <select name="FK_com_id_"  class="form-select" id="cmb_companies" >
+                                   <!-- {% for com in companies %}
+                                    <option value="{{ com.id }}"  >{{ com.com_name }}</option>
+                                {% endfor %}
+                                -->
+                                </select>
+                              </div>
+
+        
+                            </div>
+                            <div class="modal-footer">
+                            <a href="/contacts"><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                Close
+                            </button></a>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}  

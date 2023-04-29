@@ -1,0 +1,97 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="content-wrapper">
+    <!-- Content -->
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+      <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">P R O D U C T / </span> U P D A T E</h4>
+
+      <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-4">
+                <div class="card-body">
+                        <form action="/product-update/{{p.id}}" method="POST">
+                            {% csrf_token %} 
+                            <div class="modal-body">
+                            <div class="row">
+                                <div class="col mb-3">
+                                <label for="nameBasic" class="form-label">NAME</label>
+                                <input name="prod_name" type="text" id="nameBasic" class="form-control" placeholder="Enter Name" value="{{p.product_name}}" />
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col mb-3">
+                                <label for="nameBasic" class="form-label">LINE</label>
+                                <input name="prod_line" type="text" id="nameBasic" class="form-control" placeholder="Enter Name" value="{{p.product_name}}" />
+                                </div>
+                            </div>
+                            <div class="row g-2">
+                                <div class="col mb-0">
+                                    <label for="exampleFormControlSelect1" class="form-label">SIZE</label>
+                                    <select name="size_id" class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
+                                      <option selected value="{{ p.fk_size_id.id }}">{{ p.fk_size_id }}</option>
+                                      {% for i in sizes %}
+                                      <option value="{{ i.id }}">{{ i.size_name }}</option>
+                                      {% endfor %}
+                                    </select>
+                                </div>
+                                <div class="col mb-0">
+                                    <label for="exampleFormControlSelect1" class="form-label">SPECS</label>
+                                    <select name="spec_id" class="form-select" id="exampleFormControlSelect1" aria-label="Default select example">
+                                      <option selected value="{{ p.fk_specs_id.id }}">{{ p.fk_specs_id }}</option>
+                                      {% for i in specs %}
+                                      <option value="{{ i.id }}">{{ i.specs_name }}</option>
+                                      {% endfor %}
+                                    </select>
+                                </div>
+                                
+                            </div>
+                            <div class="row g-2">
+                                <div class="col mb-0">  
+                                <label for="emailBasic" class="form-label">INTERNAL NUMBER</label>
+                                <input name="prod_intern" type="text" id="nameBasic" class="form-control" placeholder="4547****" value="{{p.product_internal_id}}"/>
+                                </div>
+                                <div class="col mb-0">
+                                <label for="dobBasic" class="form-label">BARCODE</label>
+                                <input name="prod_barcode" type="text" id="nameBasic" class="form-control" placeholder="4778C***" value="{{p.product_barcode}}" />
+                                </div>
+                            </div>
+                            <div class="row g-2">
+                                <div class="col mb-0">
+                                <label for="emailBasic" class="form-label">COST</label>
+                                <input name="prod_cost" type="text" id="nameBasic" class="form-control" placeholder="00.00$" value="{{p.product_cost_price}}"/>
+                                </div>
+                                <div class="col mb-0">
+                                <label for="dobBasic" class="form-label">PRICE</label>
+                                <input name="prod_price" type="text" id="nameBasic" class="form-control" placeholder="00.00$" value="{{p.product_sell_price}}"/>
+                                </div>
+                            </div>
+                            <div class="row g-2">
+                                <div class="col mb-0">
+                                <label for="nameBasic" class="form-label">DISCOUNT</label>
+                                <input name="prod_dis" type="text" id="nameBasic" class="form-control" placeholder="00.00" value="{{p.product_discount}}"/>
+                                </div>
+                                <div class="col mb-0">
+                                    <label for="nameBasic" class="form-label">TAX NUMBER</label>
+                                    <input name="prod_tax" type="text" id="nameBasic" class="form-control" placeholder="6465****" value="{{p.product_tax_num}}"/>
+                                </div>
+                            </div>
+                            </div>
+                            <div class="modal-footer">
+                            <a href="/products"><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                Close
+                            </button></a>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+                       
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}  

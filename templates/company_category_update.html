@@ -1,0 +1,45 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="content-wrapper">
+    <!-- Content -->
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+      <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">C O M P A N Y -- C A T E G O R Y / </span> U P D A T E</h4>
+
+      <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-4">
+                <div class="card-body">
+                        <form action="/company-category-update/{{c.id}}" method="POST">
+                            {% csrf_token %} 
+                            <div class="modal-body">
+                          
+                            <div class="row g-2">
+                                <div class="col mb-0">  
+                                <label for="emailBasic" class="form-label">INTERNAL NUMBER</label>
+                                <input name="com_cat_id" type="text" id="nameBasic" class="form-control" placeholder="4547****" value="{{c.com_category_id}}"/>
+                                </div>
+                                <div class="col mb-0">
+                                <label for="dobBasic" class="form-label">Name</label>
+                                <input name="com_cat_name" type="text" id="nameBasic" class="form-control" placeholder="4778C***" value="{{c.com_category_name }}" />
+                                </div>
+                            </div>
+                            </div>
+                            <div class="modal-footer">
+                            <a href="/company-category"><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                Close
+                            </button></a>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+                       
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}  

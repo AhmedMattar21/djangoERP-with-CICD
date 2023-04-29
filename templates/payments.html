@@ -1,0 +1,186 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+
+   
+
+<!-- Products Table rows -->
+   <br><br>
+        <div class="card"; margin: 0%;>
+            <h5 class="card-header" style="text-align: center;"> P     A    Y    M    E    N    T    E   S </h5>
+            <!-- Default Modal -->
+        <div class="col-lg-4 col-md-6" style="padding-left: 30px; padding-bottom: 10px;">
+            <div class="mt-3" >
+            <!-- Button trigger modal -->
+            <button
+                type="button"
+                class="btn btn-primary"
+                data-bs-toggle="modal"
+                data-bs-target="#basicModal"
+                >
+            ADD NEW PAYMENT
+            </button>
+
+            <!-- Modal -->
+            <div class="modal fade" id="basicModal" tabindex="-1" aria-hidden="true">
+                <div class="modal-dialog" role="document">
+                <div class="modal-content">
+                    <div class="modal-header">
+                    <h5 class="modal-title" id="exampleModalLabel1">A D D - N E W - P A Y M E N T </h5>
+                    <button
+                        type="button"
+                        class="btn-close"
+                        data-bs-dismiss="modal"
+                        aria-label="Close"
+                    ></button>
+                    </div>
+                <form action="payments" method="POST">
+                    {% csrf_token %} 
+                    <div class="modal-body">
+                    
+                    <div class="row g-2">
+                        <div class="col mb-0">
+                        <label for="emailBasic" class="form-label">Internal Id</label>
+                        <input name="payment_id_" type="text" id="nameBasic" class="form-control" placeholder="4547****" />
+                        </div>
+                        <div class="col mb-0">
+                        <label for="dobBasic" class="form-label">Name</label>
+                        <input name="payment_name_" type="text" id="nameBasic" class="form-control" placeholder="jo***" />
+                        </div>
+                    </div>
+                    <div class="row g-2">
+                        <div class="col mb-0">
+                        <label for="emailBasic" class="form-label">User Name</label>
+                        <input name="payment_username_" type="text" id="nameBasic" class="form-control" placeholder="Mo******" />
+                        </div>
+                        <div class="col mb-0">
+                        <label for="dobBasic" class="form-label">Paid</label>
+                        <input name="payment_paid_" type="text" id="nameBasic" class="form-control" placeholder="(+)01*******" />
+                        </div>
+                    </div>
+
+                    <div class="row g-2">
+                        <div class="col mb-0">
+                        <label for="emailBasic" class="form-label">Method</label>
+                        <input name="payment_method_" type="text" id="nameBasic" class="form-control" placeholder="Cash|Check****" />
+                        </div>
+                        <div class="mb-3 row">
+                            <label for="html5-date-input" class="col-md-2 col-form-label">Date</label>
+                            <div class="col-md-10">
+                              <input name="payment_date_" class="form-control" type="date" value="2023-04-23" id="html5-date-input" />
+                            </div>
+                          </div>
+                     </div>
+                     <div class="row g-2">
+                        <div class="col mb-0">
+                        <label for="emailBasic" class="form-label">Total Require </label>
+                        <input name="payment_tot_require_" type="text" id="nameBasic" class="form-control" placeholder="Cash|Check****" />
+                        </div>
+
+                        <div class="col mb-0">
+                            <label for="emailBasic" class="form-label">Total Reminder </label>
+                            <input name="payment_tot_remind_" type="text" id="nameBasic" class="form-control" placeholder="Cash|Check****" />
+                            </div>
+                       
+                     </div>
+                     <div class="row">
+                        <div class="col mb-3">
+                        <label for="nameBasic" class="form-label">Comments</label>
+                        <input name="payment_comments_" type="text" id="nameBasic" class="form-control" placeholder="Comments....... " />
+                        </div>
+                     </div>
+
+                  
+       
+                       <div class="mb-3">
+                        <label for="exampleFormControlSelect1" class="form-label">Company Category Type</label>
+                        <select name="FK_com_category_id_" class="form-select" id="cmb_categories"  >
+                            {% for c in categories %}
+                            <option value='{{ c.id }}'>{{ c.com_category_name }}</option>
+                        {% endfor %}
+                        </select>
+                       </div>
+
+                      <div class="mb-3">
+                        <label for="exampleFormControlSelect1" class="form-label">Companies</label>
+                        <select name="FK_com_id_" class="form-select"   id="cmb_companies">
+                        <!--
+                             {% for com in companies %}
+                            <option value='{{ com.id }}'>{{ com.com_name }}</option>
+                            {% endfor %}
+                        -->   
+                            
+                        </select>
+                      </div>
+
+                    </div>
+                    <div class="modal-footer">
+                    <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                        Close
+                    </button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                    </div>
+
+                </form>
+                </div>
+                </div>
+            </div>
+            </div>
+        </div>
+            <div class="table-responsive text-nowrap" style="padding-bottom: 10%; "">
+            <table class="table table-hover" style="padding-bottom: 30px">
+                <thead>
+                <tr>
+                    <th>Internal Code</th>
+                    <th>Name</th>
+                    <th>User Name</th>
+                    <th>Paid Amount</th>
+                    <th>Method</th>
+                    <th>comments</th>
+                    <th>Date</th>
+                    <th>Total Require</th>
+                    <th>Total Reminder</th>
+                    <th>Comapny Name</th>
+                    <th>ACTIONS</th>
+                </tr>
+                </thead>
+                <tbody class="table-border-bottom-0">
+                {% for pay in payments %}
+                <tr>
+                    <td>{{pay.payment_id}}</td>
+                    <td><i class="fab fa-angular fa-lg text-danger me-3"></i> <strong>{{pay.payment_name}}</strong></td>
+                    <td>{{pay.payment_username}}</td>
+                    <td>{{pay.payment_paid}}</td>
+                    <td>{{pay.payment_method}}</td>
+                    <td>{{pay.payment_comments}}</td>
+                    <td>{{pay.payment_date}}</td>
+                    <td>{{pay.payment_tot_require}}</td>
+                    <td>{{pay.payment_tot_remind}}</td>
+                    <td>{{pay.FK_com_id.com_name }}</td>
+                    
+                 
+                    <td>
+                    <div class="dropdown">
+                        <button type="button" class="btn p-0 dropdown-toggle hide-arrow" data-bs-toggle="dropdown">
+                        <i class="bx bx-dots-vertical-rounded"></i>
+                        </button>
+                        <div class="dropdown-menu">
+                        <a class="dropdown-item" href="payment-update/{{pay.id}}"
+                            ><i class="bx bx-edit-alt me-1"></i> Edit</a
+                        >
+                        <a class="dropdown-item" href="payment-delete/{{pay.id}}"
+                            ><i class="bx bx-trash me-1"></i> Delete</a
+                        >
+                        </div>
+                    </div>
+                    </td>
+                </tr>
+                {% endfor %}
+                </tbody>
+            </table>
+            </div>
+        </div>
+   
+<!--/ Products Table rows -->
+{% endblock %}

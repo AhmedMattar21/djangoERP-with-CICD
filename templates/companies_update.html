@@ -1,0 +1,96 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="content-wrapper">
+    <!-- Content -->
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+      <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">C O M P A N Y/ </span> U P D A T E</h4>
+
+      <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-4">
+                <div class="card-body">
+                        
+                        <form action="/company-update/{{c.id}}" method="POST">
+                            {% csrf_token %} 
+                            <div class="modal-body">
+                            
+                            <div class="row g-2">
+                                <div class="col mb-0">
+                                <label for="emailBasic" class="form-label">Internal Code</label>
+                                <input name="com_id_" type="text" id="nameBasic" class="form-control" placeholder="4547****" value="{{c.com_id}}"/>
+                                </div>
+                                <div class="col mb-0">
+                                <label for="dobBasic" class="form-label">Name</label>
+                                <input name="com_name_" type="text" id="nameBasic" class="form-control" placeholder="jo***" value="{{c.com_name}}"/>
+                                </div>
+                            </div>
+                            <div class="row g-2">
+                                <div class="col mb-0">
+                                <label for="emailBasic" class="form-label">Address</label>
+                                <input name="com_address_" type="text" id="nameBasic" class="form-control" placeholder="Cairo-******" value="{{c.com_address}}"/>
+                                </div>
+                                <div class="col mb-0">
+                                <label for="dobBasic" class="form-label">Phone</label>
+                                <input name="com_phone_" type="text" id="nameBasic" class="form-control" placeholder="(+)01*******" value="{{c.com_phone}} "/>
+                                </div>
+                            </div>
+        
+                            <div class="row g-2">
+                                <div class="col mb-0">
+                                <label for="emailBasic" class="form-label">E-mail</label>
+                                <input name="com_email_" type="text" id="nameBasic" class="form-control" placeholder="name@example.com"value="{{c.com_email}} "/>
+                                </div>
+                                <div class="col mb-0">
+                                <label for="dobBasic" class="form-label">Tax Registeration Number</label>
+                                <input name="com_tax_reg_" type="text" id="nameBasic" class="form-control" placeholder="999777***" value="{{c.com_tax_reg}}"/>
+                                </div>
+                            </div>
+        
+                            <div class="row">
+                                <div class="col mb-3">
+                                <label for="nameBasic" class="form-label">Company Description</label>
+                                <input name="com_desc_" type="text" id="nameBasic" class="form-control" placeholder="Discription....... " value="{{c.com_desc}}"/>
+                                </div>
+                            </div>
+                            <div class="row">
+                                <div class="col mb-3">
+                                <label for="nameBasic" class="form-label">Notes</label>
+                                <input name="com_notes_" type="text" id="nameBasic" class="form-control" placeholder="Notes....... " value="{{c.com_notes}}"/>
+                                </div>
+                            </div>
+                            <div class="mb-3">
+                                <label for="exampleFormControlSelect1" class="form-label">Company Business Type</label>
+                                <select name="com_business_type_" class="form-select" id="exampleFormControlSelect1" aria-label="Default select example" value="{{c.com_business_type}} ">
+                                  <option value="Business">Business</option>
+                                  <option value="Person">Person</option>
+                                  <option value="Foreigner">Foreigner</option>
+                                </select>
+                              </div>
+                              <div class="mb-3">
+                                <label for="exampleFormControlSelect1" class="form-label">Company Category Type</label>
+                                <select name="FK_com_category_id_" value="{{c.FK_com_category_id}}" class="form-select"  >
+                                    {% for cat in categories %}
+                                    <option value='{{ cat.id }}'  >{{ cat.com_category_name }}</option>
+                                {% endfor %}
+                                </select>
+                              </div>
+        
+                            </div>
+                            <div class="modal-footer">
+                            <a href="/companies"><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                Close
+                            </button></a>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}  

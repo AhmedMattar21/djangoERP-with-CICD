@@ -1,0 +1,33 @@
+{% extends 'index.html' %}
+
+{% block content %}
+<div class="content-wrapper">
+    <!-- Content -->
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+      <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light"> W A R E H O U S E S </span> </h4>
+    
+      <div class="row mb-5">
+        
+        {% for wh in warehouses %}
+            <!-- Warehouse Card -->
+            <div class="col-md-6 col-lg-4">
+            <div class="card mb-3">
+                <div class="card-body">
+                <h5 class="card-title">{{ wh.warehouse_name }}</h5>
+                <p class="card-text">{{ wh.warehouse_desc }}</p>
+                <a href="/inventory/{{wh.id}}" class="btn btn-primary"> Open </a>
+                </div>
+            </div>
+            </div>
+        {% endfor %}
+
+        
+        
+      </div>
+
+
+    </div>
+    
+</div>
+{% endblock %}  

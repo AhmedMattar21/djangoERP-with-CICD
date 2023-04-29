@@ -1,0 +1,110 @@
+{% extends 'index.html' %}
+
+{% block content %}
+
+<div class="content-wrapper">
+    <!-- Content -->
+
+    <div class="container-xxl flex-grow-1 container-p-y">
+      <h4 class="fw-bold py-3 mb-4"><span class="text-muted fw-light">P A Y M E N T/ </span> U P D A T E</h4>
+
+      <div class="row">
+            <div class="col-md-12">
+                <div class="card mb-4">
+                <div class="card-body">
+                        
+                        <form action="/payment-update/{{p.id}}" method="POST">
+                            {% csrf_token %} 
+                            <div class="modal-body">
+                            
+                            <div class="row g-2">
+                                <div class="col mb-0">
+                                <label for="emailBasic" class="form-label">Internal Id</label>
+                                <input name="payment_id_" type="text" id="nameBasic" class="form-control" placeholder="4547****" value="{{p.payment_id}}"/>
+                                </div>
+                                <div class="col mb-0">
+                                <label for="dobBasic" class="form-label">Name</label>
+                                <input name="payment_name_" type="text" id="nameBasic" class="form-control" placeholder="jo***" value="{{p.payment_name}}"/>
+                                </div>
+                            </div>
+                            <div class="row g-2">
+                                <div class="col mb-0">
+                                <label for="emailBasic" class="form-label">User Name</label>
+                                <input name="payment_username_" type="text" id="nameBasic" class="form-control" placeholder="Cairo-******" value="{{p.payment_username}}"/>
+                                </div>
+                                <div class="col mb-0">
+                                <label for="dobBasic" class="form-label">Paid Amount</label>
+                                <input name="payment_paid_" type="text" id="nameBasic" class="form-control" placeholder="(+)01*******" value="{{p.payment_paid}} "/>
+                                </div>
+                            </div>
+
+                            <div class="row g-2">
+                                <div class="col mb-0">
+                                <label for="emailBasic" class="form-label">Method</label>
+                                <input name="payment_method_" type="text" id="nameBasic" class="form-control" placeholder="Cash|Check****" value="{{p.payment_method}} " />
+                                </div>
+                                <div class="mb-3 row">
+                                    <label for="html5-date-input" class="col-md-2 col-form-label">Date</label>
+                                    <div class="col-md-10">
+                                      <input name="payment_date_" class="form-control" type="date" value="2023-04-23" id="html5-date-input"  value="{{p.payment_date}} " />
+                                    </div>
+                                  </div>
+                             </div>
+                             <div class="row g-2">
+                                <div class="col mb-0">
+                                <label for="emailBasic" class="form-label">Total Require </label>
+                                <input name="payment_tot_require_" type="text" id="nameBasic" class="form-control" placeholder="Cash|Check****"   value="{{p.payment_tot_require}} "/>
+                                </div>
+                                <div class="col mb-0">
+                                    <label for="emailBasic" class="form-label">Total Reminder </label>
+                                    <input name="payment_tot_remind_" type="text" id="nameBasic" class="form-control" placeholder="Cash|Check****"  value="{{p.payment_tot_remind}} "/>
+                                    </div>
+                             </div>
+                             <div class="row">
+                                <div class="col mb-3">
+                                <label for="nameBasic" class="form-label">Comments</label>
+                                <input name="payment_comments_" type="text" id="nameBasic" class="form-control" placeholder="Comments....... "   value="{{p.payment_comments}} "/>
+                                </div>
+                             </div>
+
+                            <div class="mb-3">
+                                <label for="exampleFormControlSelect1" class="form-label">Company Category Type</label>
+                                <select name="FK_com_category_id_" class="form-select"   id="cmb_categories" >
+                                    {% for c in categories %}
+                                    <option value='{{ c.id }}'>{{ c.com_category_name }}</option>
+                                {% endfor %}
+                                </select>
+                            </div>
+
+                            <div class="mb-3">
+                                <label for="exampleFormControlSelect1" class="form-label">Companies</label>
+                                <select name="FK_com_id_" class="form-select"  id="cmb_companies">
+                                 <!--
+                                    {% for com in companies %}
+                                    <option value='{{ com.id }}'>{{ com.com_name }}</option>
+                                {% endfor %}
+                                 -->
+                                </select>
+                            </div>
+                            
+                            </div>
+                            <div class="modal-footer">
+                            <a href="/payments"><button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">
+                                Close
+                            </button></a>
+                            <button type="submit" class="btn btn-primary">Save changes</button>
+                            </div>
+                        </form>
+
+                        
+
+
+                    </div>
+                </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}  
