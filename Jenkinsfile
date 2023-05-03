@@ -10,7 +10,6 @@ pipeline {
 
                 sh 'python3 --version'
                 echo 'Hello python'
-                ErrOR
                 
             }
         }
