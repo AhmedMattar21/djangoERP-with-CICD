@@ -1,7 +1,7 @@
 pipeline {
    agent {
 	    docker {
-		    image 'python:3.10-alpine'
+		    image 'm4tt4r/python3-ubuntu'
 		}
     }
     stages {
