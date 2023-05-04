@@ -2,8 +2,6 @@ pipeline {
    agent {
 	    docker {
 		    image 'python:3.10-alpine'
-            args 'exec --user root "apk update;apk add curl;"'
-
 		}
     }
     stages {
@@ -19,6 +17,7 @@ pipeline {
         }
         stage('Test') {
             steps {
+                sh 'whoami'
                 echo 'Running Test 1'
                 sh '''
                     #!/bin/bash
