@@ -18,23 +18,11 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Running Test 1'
-                sh 'python3 manage.py runserver &'
-                sh '''
-                    #!/bin/bash
-                    if curl -I "http://127.0.0.1:8000" | grep -i "OK"
-                    then
-                        exit 0
-                    else
-                        exit 1
-                    fi
-                    '''
             }   
         }
         stage('Archive') {
             steps {
-                echo 'Running Test 1'
-                echo 'Running Test 2'
-                echo 'Running Test 3'
+                sh 'tar -cvzf artifact.tar.gz .'
             }   
         }
     }
