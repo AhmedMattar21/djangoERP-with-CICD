@@ -18,6 +18,7 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Running Test 1'
+                sh 'python3 manage.py runserver &'
                 sh '''
                     #!/bin/bash
                     if curl -I "http://127.0.0.1:8000" | grep -i "OK"
