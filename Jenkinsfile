@@ -28,12 +28,14 @@ pipeline {
         }
         stage('Deploy Infrastructure') {
             steps {
-                echo 'Installing Dependancies'
-                sh '''
-                sudo apt update
-                sudo apt install awscli -y
-                aws --version
-                '''
+                withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID',
+                 credentialsId: 'jenkins-awscli', 
+                 screteKeyVariable: 'AWS_SECRET_ACCESS_KEY'
+                 )]){
+                    
+                    sh 'aws iam list-users'
+
+                 }
             }   
         }
         stage('Configure Infrastructure') {
