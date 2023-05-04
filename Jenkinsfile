@@ -8,9 +8,10 @@ pipeline {
         stage('Build') {
             steps {
                // sh 'sudo pip3 install -r requirements.txt '
-
-                sh 'source env/bin/activate'
-                sh 'python3 manage.py runserver'
+                withEnv(["HOME=${env.WORKSPACE}"]) {
+                    sh 'pip3 install --user -r requirements.txt'
+                    sh 'python3 manage.py runserver'
+                }
             }   
         }
         stage('Test') {
