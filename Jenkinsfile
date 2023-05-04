@@ -10,7 +10,7 @@ pipeline {
                // sh 'sudo pip3 install -r requirements.txt '
                 withEnv(["HOME=${env.WORKSPACE}"]) {
                     sh 'pip3 install --user -r requirements.txt'
-                    sh 'python3 manage.py runserver'
+                    sh 'python3 manage.py runserver &'
                 }
             }   
         }
