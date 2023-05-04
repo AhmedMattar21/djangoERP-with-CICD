@@ -25,5 +25,20 @@ pipeline {
                 sh 'tar -cvzf artifact.tar.gz App/*'
             }   
         }
+        stage('Deploy Infrastructure') {
+            steps {
+                echo 'Installing Dependancies'
+                sh '''
+                echo hello
+                echo "hello again"
+                ls
+                '''
+            }   
+        stage('Configure Infrastructure') {
+            steps {
+                echo 'Installing Dependancies'
+                
+            }  
+        }
     }
 }
