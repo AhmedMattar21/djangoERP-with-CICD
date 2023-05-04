@@ -7,7 +7,9 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-                sh 'sudo pip3 install -r requirements.txt '
+               // sh 'sudo pip3 install -r requirements.txt '
+
+                sh 'source env/bin/activate'
                 sh 'python3 manage.py runserver'
             }   
         }
