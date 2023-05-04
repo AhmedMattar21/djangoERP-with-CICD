@@ -22,7 +22,7 @@ pipeline {
         }
         stage('Archive') {
             steps {
-                sh 'tar -cvzf artifact.tar.gz App/*'
+                //sh 'tar -czf artifact.tar.gz App/*'
             }   
         }
         stage('Deploy Infrastructure') {
