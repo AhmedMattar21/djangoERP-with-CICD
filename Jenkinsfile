@@ -18,7 +18,8 @@ pipeline {
         stage('Test') {
             steps {
                 echo 'Running Test 1'
-                sh '''#!/bin/bash
+                sh '''
+                    #!/bin/bash
                     if curl -I "http://127.0.0.1:8000" | grep -i "OK"
                     then
                         exit 0
