@@ -34,7 +34,7 @@ pipeline {
                  )]){
                     
                     withEnv(["HOME=${env.WORKSPACE}"]) {
-                    sh './create-stack.sh dj scripts/infrastructure.yml scripts/infra-parameters.json'
+                    sh './create-stack.sh dj-${BUILD_NUMBER} scripts/infrastructure.yml scripts/infra-parameters.json'
                 }
 
                  }
