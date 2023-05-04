@@ -17,9 +17,9 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'ls'
-                sh 'chmod +x scripts/test-1.sh'
-                sh './scripts/test-1.sh'
+                sh 'cd scripts'
+                sh 'chmod +x test-1.sh'
+                sh './test-1.sh'
             }   
         }
         stage('Archive') {
