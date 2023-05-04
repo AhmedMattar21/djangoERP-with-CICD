@@ -5,13 +5,11 @@ pipeline {
 		}
     }
     stages {
-        stage('Hello') {
+        stage('Build') {
             steps {
-
-                sh 'python3 --version'
-                echo 'Hello python'
-                
-            }
+                sh 'ls'
+                sh 'pwd'
+            }   
         }
     }
 }
