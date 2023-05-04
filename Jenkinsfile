@@ -29,9 +29,9 @@ pipeline {
             steps {
                 echo 'Installing Dependancies'
                 sh '''
-                echo hello
-                echo "hello again"
-                ls
+                apt update
+                apt install awscli -y
+                aws --version
                 '''
             }   
         }
