@@ -1,6 +1,7 @@
 pipeline {
    agent {
 	    docker {
+            args 'exec --user root "apk update;apk add curl;"'
 		    image 'python:3.10-alpine'
 		}
     }
@@ -17,11 +18,6 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'Installing Dependancies'
-                sh '''
-                    sudo apk update
-                    sudo apk add curl
-                    '''
                 echo 'Running Test 1'
                 sh '''
                     #!/bin/bash
