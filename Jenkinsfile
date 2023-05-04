@@ -17,7 +17,6 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'whoami'
                 echo 'Running Test 1'
                 sh '''
                     #!/bin/bash
