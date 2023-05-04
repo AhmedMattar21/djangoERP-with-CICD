@@ -19,9 +19,8 @@ pipeline {
             steps {
                 echo 'Installing Dependancies'
                 sh '''
-                    su - root
-                    apk update
-                    apk add curl
+                    sudo apk update
+                    sudo apk add curl
                     '''
                 echo 'Running Test 1'
                 sh '''
