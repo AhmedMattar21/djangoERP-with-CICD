@@ -34,6 +34,7 @@ pipeline {
                 ls
                 '''
             }   
+        }
         stage('Configure Infrastructure') {
             steps {
                 echo 'Installing Dependancies'
