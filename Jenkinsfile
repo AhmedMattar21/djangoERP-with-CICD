@@ -17,6 +17,11 @@ pipeline {
         }
         stage('Test') {
             steps {
+                echo 'Installing Dependancies'
+                sh '''
+                    apk update
+                    apk add curl
+                    '''
                 echo 'Running Test 1'
                 sh '''
                     #!/bin/bash
