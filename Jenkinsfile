@@ -33,7 +33,9 @@ pipeline {
                  screteKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                  )]){
                     
-                    sh 'aws iam list-users'
+                    withEnv(["HOME=${env.WORKSPACE}"]) {
+                    sh './create-stack.sh dj scripts/infrastructure.yml scripts/infra-parameters.json'
+                }
 
                  }
             }   
