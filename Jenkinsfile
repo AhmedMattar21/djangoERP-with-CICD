@@ -7,7 +7,8 @@ pipeline {
     stages {
         stage('Build') {
             steps {
-               // sh 'sudo pip3 install -r requirements.txt '
+               //  Change the home dir cus jenkins has no permissions 
+               //   on the server's home dir.
                 withEnv(["HOME=${env.WORKSPACE}"]) {
                     sh 'pip3 install --user -r requirements.txt'
                     sh 'python3 manage.py runserver &'
@@ -16,9 +17,8 @@ pipeline {
         }
         stage('Test') {
             steps {
-                echo 'Running Test 1'
-                echo 'Running Test 2'
-                echo 'Running Test 3'
+                sh 'chmod +x scripts/test-1.sh'
+                sh './scripts/test-1.sh'
             }   
         }
         stage('Archive') {
