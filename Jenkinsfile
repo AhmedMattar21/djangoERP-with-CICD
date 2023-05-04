@@ -33,7 +33,7 @@ pipeline {
                  screteKeyVariable: 'AWS_SECRET_ACCESS_KEY'
                  )]){
                     
-                    sh 'aws iam list-users'
+                    sh 'awscli iam list-users'
 
                  }
             }   
