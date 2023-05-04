@@ -1,8 +1,9 @@
 pipeline {
    agent {
 	    docker {
-            args 'exec --user root "apk update;apk add curl;"'
 		    image 'python:3.10-alpine'
+            args 'exec --user root "apk update;apk add curl;"'
+
 		}
     }
     stages {
