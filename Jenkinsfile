@@ -17,9 +17,15 @@ pipeline {
         }
         stage('Test') {
             steps {
-                sh 'cd scripts'
-                sh 'chmod +x test-1.sh'
-                sh './test-1.sh'
+                echo 'Running Test 1'
+                sh '''#!/bin/bash
+                    if curl -I "http://127.0.0.1:8000" | grep -i "OK"
+                    then
+                        exit 0
+                    else
+                        exit 1
+                    fi
+                    '''
             }   
         }
         stage('Archive') {
