@@ -10,8 +10,8 @@ pipeline {
                //  Change the home dir cus jenkins has no permissions 
                //   on the server's home dir.
                 withEnv(["HOME=${env.WORKSPACE}"]) {
-                    sh 'pip3 install --user -r requirements.txt'
-                    sh 'python3 manage.py runserver &'
+                    sh 'pip3 install --user -r App/requirements.txt'
+                    sh 'python3 App/manage.py runserver &'
                 }
             }   
         }
