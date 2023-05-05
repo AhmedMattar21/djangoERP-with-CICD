@@ -50,7 +50,7 @@ pipeline {
         stage('Configure Infrastructure') {
             steps {
                 withEnv(["HOME=${env.WORKSPACE}"]) {
-                    sh ' ansible-playbook ansible/playbook.yml -i ansible/inventory.txt --key-file $ANSIBLE_PRIVATE_KEY --user ubuntu'
+                    sh ' ansible-playbook ansible/playbook.yml -i ansible/inventory.txt --user ubuntu --private-key=$ANSIBLE_PRIVATE_KEY '
                 }
                 
             }  
