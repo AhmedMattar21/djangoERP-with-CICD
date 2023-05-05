@@ -33,5 +33,4 @@
 
       - name: Run the App
         shell: python3 /home/ubuntu/App/manage.py runserver
-        args:
-          executable: /bin/python3
+        
