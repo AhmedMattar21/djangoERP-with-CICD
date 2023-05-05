@@ -6,9 +6,17 @@
     become_user: root
     tasks:
       
-      - name: Create a username for tomcat
-        user:
-          name: ahmedmattar
-          group: users
-          shell: /bin/bash
-          home: /home/ahmedmattar
+      - name: Run the equivalent of "apt-get update" as a separate step
+        apt:
+          update_cache: yes
+      - name: Install latest version of "Python3" 
+        apt:
+          name: 
+          - python3
+          - python3-pip
+          state: latest
+      
+      - name: copy a file from remote machine to remote machine
+        copy:
+          src: ~/artifact.tar.gz
+          dest: ~/artifact.tar.gz
