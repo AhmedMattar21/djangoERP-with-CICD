@@ -32,6 +32,6 @@
           requirements: /home/ubuntu/App/requirements.txt
 
       - name: Run the App
-        shell: python3 manage.py runserver
+        shell: python3 /home/ubuntu/App/manage.py runserver
         args:
           executable: /bin/python3
