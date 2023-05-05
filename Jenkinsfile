@@ -17,7 +17,7 @@ pipeline {
                //   on the server's home dir.
                 withEnv(["HOME=${env.WORKSPACE}"]) {
                     sh 'pip3 install --user -r App/requirements.txt'
-                    sh 'python3 App/manage.py runserver &'
+                   // sh 'python3 App/manage.py runserver &'
                 }
             }   
         }
