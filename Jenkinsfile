@@ -1,12 +1,12 @@
 pipeline {
-   agent {
-	    docker {
-		    image 'm4tt4r/server111'
-		}
-        environment {
+    agent {
+            docker {
+                image 'm4tt4r/server111'
+            }
+        }
+    environment {
             ANSIBLE_PRIVATE_KEY=credentials('aws-private-key')
         }
-    }
     stages {
         stage('Build') {
             steps {
