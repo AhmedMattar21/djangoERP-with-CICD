@@ -29,7 +29,7 @@ pipeline {
         stage('Archive') {
             steps {
                 echo 'archiving the app'
-                //sh 'tar -czf artifact.tar.gz App/*'
+                sh 'tar -czf artifact.tar.gz App/*'
             }   
         }
         stage('Deploy Infrastructure') {

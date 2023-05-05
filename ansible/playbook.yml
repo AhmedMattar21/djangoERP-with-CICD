@@ -19,4 +19,4 @@
       - name: copy a file from remote machine to remote machine
         copy:
           src: ~/artifact.tar.gz
-          dest: ~/artifact.tar.gz
+          dest: /home/ubuntu/artifact.tar.gz
