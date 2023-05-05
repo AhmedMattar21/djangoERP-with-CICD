@@ -6,6 +6,7 @@ pipeline {
         }
     environment {
             ANSIBLE_PRIVATE_KEY=credentials('aws-private-key')
+            AWS_DEFAULT_REGION='us-east-1'
         }
     stages {
         stage('Build') {
