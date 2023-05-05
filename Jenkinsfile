@@ -41,6 +41,7 @@ pipeline {
                     sh './create-stack.sh dj-${BUILD_NUMBER} scripts/infrastructure.yml scripts/infra-parameters.json'
                     sh 'sleep 10'
                     sh './getEc2Ip.sh >> ansible/inventory.txt'
+                    sh 'cat ansible/inventory.txt'
                 }
 
                  }
