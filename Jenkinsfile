@@ -1,6 +1,7 @@
 pipeline {
     agent {
             docker {
+                args '-v /etc/passwd:/etc/passwd'
                 image 'm4tt4r/server111'
             }
         }
