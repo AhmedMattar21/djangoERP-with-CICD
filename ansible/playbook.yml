@@ -16,7 +16,22 @@
           - python3-pip
           state: latest
       
-      - name: copy a file from remote machine to remote machine
+      - name: copy a file from testing machine to remote machine
         copy:
           src: ~/artifact.tar.gz
           dest: /home/ubuntu/artifact.tar.gz
+
+      - name: Unarchive a file that is already on the remote machine
+        unarchive:
+          src: /home/ubuntu/artifact.tar.gz
+          dest: /home/ubuntu/
+          remote_src: yes
+      
+      - name: Install specified python requirements
+        pip:
+          requirements: /home/ubuntu/App/requirements.txt
+
+      - name: Run the App
+        shell: python3 manage.py runserver
+        args:
+          executable: /bin/python3
