@@ -1,8 +1,11 @@
 pipeline {
    agent {
 	    docker {
-		    image 'm4tt4r/python3-ubuntu'
+		    image 'm4tt4r/server111'
 		}
+        environment {
+            ANSIBLE_PRIVATE_KEY=credentials('aws-private-key')
+        }
     }
     stages {
         stage('Build') {
@@ -35,6 +38,8 @@ pipeline {
                     
                     withEnv(["HOME=${env.WORKSPACE}"]) {
                     sh './create-stack.sh dj-${BUILD_NUMBER} scripts/infrastructure.yml scripts/infra-parameters.json'
+                    sh 'sleep 5'
+                    sh './getEc2Ip.sh >> ansible/inventory.txt'
                 }
 
                  }
@@ -42,7 +47,9 @@ pipeline {
         }
         stage('Configure Infrastructure') {
             steps {
-                echo 'Installing Dependancies'
+                withEnv(["HOME=${env.WORKSPACE}"]) {
+                    sh ' ansible-playbook ansible/playbook.yml -i ansible/inventory.txt --key-file $ANSIBLE_PRIVATE_KEY --user ubuntu'
+                }
                 
             }  
         }
