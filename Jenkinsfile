@@ -58,6 +58,7 @@ pipeline {
             when {
                     environment name: 'BRANCH_NAME', value: 'production'
                 }
+
             steps {
                 withEnv(["HOME=${env.WORKSPACE}"]) {
                     sh 'export ANSIBLE_HOST_KEY_CHECKING=False'
