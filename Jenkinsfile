@@ -60,4 +60,16 @@ pipeline {
             }  
         }
     }
+    post {
+        success {
+            steps {
+                slackSend color: 'good', message: 'Hello from Jenkins ^_^ the build has been done successfully!'
+            }
+        }
+        unsuccessful {
+            steps {
+                slackSend color: 'danger', message: 'Hello from Jenkins -_- the build has been faild!'
+            }
+        }
+    }
 }
