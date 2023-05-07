@@ -18,6 +18,7 @@ pipeline {
                //   on the server's home dir.
                 withEnv(["HOME=${env.WORKSPACE}"]) {
                     sh 'pip3 install --user -r App/requirements.txt'
+                    sh 'echo "Branch name is ${BRANCH_NAME}"'
                    // sh 'python3 App/manage.py runserver &'
                 }
             }   
@@ -34,6 +35,9 @@ pipeline {
             }   
         }
         stage('Deploy Infrastructure') {
+            when {
+                    environment name: 'BRANCH_NAME', value: 'production'
+                }
             steps {
                 withCredentials([aws(accessKeyVariable: 'AWS_ACCESS_KEY_ID',
                  credentialsId: 'jenkins-awscli', 
@@ -51,6 +55,10 @@ pipeline {
             }   
         }
         stage('Configure Infrastructure') {
+            when {
+                    environment name: 'BRANCH_NAME', value: 'production'
+                }
+
             steps {
                 withEnv(["HOME=${env.WORKSPACE}"]) {
                     sh 'export ANSIBLE_HOST_KEY_CHECKING=False'
