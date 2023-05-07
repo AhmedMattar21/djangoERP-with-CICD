@@ -18,7 +18,7 @@ pipeline {
                //   on the server's home dir.
                 withEnv(["HOME=${env.WORKSPACE}"]) {
                     sh 'pip3 install --user -r App/requirements.txt'
-                    echo ' Branch name is ${BRANCH_NAME}'
+                    echo ' Branch name is "${BRANCH_NAME}"'
                    // sh 'python3 App/manage.py runserver &'
                 }
             }   
